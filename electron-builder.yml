@@ -1,0 +1,21 @@
+appId: com.biotec.app
+productName: template
+directories:
+  buildResources: public
+files:
+  - '!**/.vscode/*'
+  - '!src/*'
+  - '!api/*'
+  - '!{tsconfig.json, vite.config.ts, vite.config.main.ts, vite.config.preload.ts}'
+  - '!{.gitignore, eslint.config.js, prettier.config.js, .prettierignore }'
+extraResources:
+  - from: 'python'
+    to: 'python'
+  - from: 'backend'
+    to: 'scripts'
+    filter: '**/*.py'
+nsis:
+  oneClick: false
+  allowToChangeInstallationDirectory: true
+  deleteAppDataOnUninstall: true
+npmRebuild: false
