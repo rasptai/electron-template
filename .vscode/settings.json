@@ -4,10 +4,9 @@
   "editor.formatOnSave": true,
   "editor.tabSize": 2,
   "[python]": { "editor.tabSize": 4 },
-  "python.envFile": "${workspaceFolder}/api/.env",
   "python.defaultInterpreterPath": "${workspaceFolder}/python/python.exe", // 組み込みPythonを指定
   "python.analysis.extraPaths": ["${workspaceFolder}/python/lib/site-packages"], // 組み込みPythonのsite-packagesを追加
   "terminal.integrated.env.windows": {
     "PATH": "${workspaceFolder}/python;${workspaceFolder}/python/Scripts;${env:PATH}"
-  } // 組み込みPythonをPATHの先頭に追加
+  }
 }
