@@ -1,8 +1,15 @@
-import Versions from './components/Versions'
+import { useState } from 'react'
+
 import electronLogo from './assets/electron.svg'
+import Versions from './components/Versions'
 
 function App(): React.JSX.Element {
-  const ipcHandle = (): void => window.electron.ipcRenderer.send('ping')
+  const [message, setMessage] = useState<string>('')
+
+  const ipcHandle = async (): Promise<void> => {
+    const result = await window.api.runPythonScript('your-script.py')
+    setMessage(result[0])
+  }
 
   return (
     <>
@@ -23,10 +30,11 @@ function App(): React.JSX.Element {
         </div>
         <div className="action">
           <a target="_blank" rel="noreferrer" onClick={ipcHandle}>
-            Send IPC
+            Run your-script.py
           </a>
         </div>
       </div>
+      <p className="tip">{message}</p>
       <Versions></Versions>
     </>
   )
