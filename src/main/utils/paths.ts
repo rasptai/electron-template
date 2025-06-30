@@ -6,7 +6,7 @@ export function getPythonPath(): string {
   // 開発環境であれば仮想環境、本番環境であればelectron-builderで指定したextraResourcesフォルダ
   const basePath = is.dev
     ? join(process.cwd(), 'python/.venv')
-    : join(process.resourcesPath, 'runtime')
+    : join(process.resourcesPath, 'python')
 
   if (process.platform === 'win32') {
     return join(basePath, 'python.exe')

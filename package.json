@@ -16,8 +16,8 @@
     "build": "npm run typecheck && electron-vite build",
     "postinstall": "electron-builder install-app-deps",
     "build:unpack": "npm run build && electron-builder --dir",
-    "build:win": "npm run build && electron-builder --win",
-    "build:mac": "electron-vite build && electron-builder --mac"
+    "build:win": "npm run build && tsx python/build/setup-python.ts --win && electron-builder --win && tsx python/build/cleanup-python.ts",
+    "build:mac": "npm run build && tsx python/build/setup-python.ts --mac && electron-builder --mac && tsx python/build/cleanup-python.ts"
   },
   "dependencies": {
     "@electron-toolkit/preload": "^3.0.1",
