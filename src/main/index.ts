@@ -18,8 +18,6 @@ function createWindow(): void {
     }
   })
 
-  openDialog(mainWindow)
-
   mainWindow.on('ready-to-show', () => {
     mainWindow.show()
   })
@@ -44,6 +42,7 @@ app.whenReady().then(() => {
   })
 
   runPythonScript()
+  openDialog()
   createWindow()
 
   app.on('activate', function () {

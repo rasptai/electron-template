@@ -5,8 +5,11 @@ interface Filters {
   extensions: string[]
 }
 
-export default function openDialog(mainWindow: BrowserWindow): void {
+export default function openDialog(): void {
   ipcMain.handle('open-dialog', async (_event, filters: Filters): Promise<string | undefined> => {
+    const mainWindow = BrowserWindow.getFocusedWindow()
+    if (!mainWindow) return
+
     const result = await dialog.showOpenDialog(mainWindow, {
       properties: ['openFile'],
       filters: [{ ...filters }]
