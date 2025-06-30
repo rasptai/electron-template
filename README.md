@@ -1,34 +1,50 @@
-# electron-template
+# Electron-Python Integration Template
 
-An Electron application with React and TypeScript
+electron-vite(React + TypeScript)をベースに、PythonShellを利用してPythonスクリプトが実行できるように拡張したElectronアプリケーションテンプレートです。
 
-## Recommended IDE Setup
+## 🚀 主な機能
 
-- [VSCode](https://code.visualstudio.com/) + [ESLint](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint) + [Prettier](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode)
+- **Electron + React + TypeScript**: モダンなデスクトップアプリ開発環境
+- **Python統合**: ElectronからPythonスクリプトの実行が可能
+- **クロスプラットフォーム**: Windows, macOS対応
+- **自動Python環境構築**: ビルド時にプラットフォーム別Python環境を自動ダウンロード
 
-## Project Setup
+## 📁 プロジェクト構成
 
-### Install
-
-```bash
-$ npm install
+```
+electron-template/
+├── src/
+│   ├── main/                     # メインプロセス
+│   │   ├── handlers/             # ここにIPCハンドラーを追加
+│   │   └── index.ts              # メインプロセスエントリポイント
+│   └── renderer/                 # GUIの実装
+│
+└── python/
+    ├── src/                      # Pythonスクリプト配置場所
+    │   └── your-script.py
+    └── requirements.txt          # Python依存パッケージ
 ```
 
-### Development
+## 開発手順
+
+### 1. リポジトリのクローン
 
 ```bash
-$ npm run dev
+git clone ~~~
+npm install
 ```
 
-### Build
+### 2. Python環境の構築
+
+python/requirements.txtにプロジェクトで使用するパッケージを記述
 
 ```bash
-# For windows
-$ npm run build:win
+cd python
+python -m venv .venv
+```
 
-# For macOS
-$ npm run build:mac
+OSごとに異なる方法でアクティベートし、
 
-# For Linux
-$ npm run build:linux
+```
+pip install -r requirements.txt
 ```
