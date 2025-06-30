@@ -3,6 +3,7 @@ import { join } from 'path'
 
 import { electronApp, is, optimizer } from '@electron-toolkit/utils'
 
+import openDialog from './handlers/open-dialog'
 import runPythonScript from './handlers/run-python-script'
 
 function createWindow(): void {
@@ -16,6 +17,8 @@ function createWindow(): void {
       sandbox: false
     }
   })
+
+  openDialog(mainWindow)
 
   mainWindow.on('ready-to-show', () => {
     mainWindow.show()

@@ -3,8 +3,11 @@ import { contextBridge, ipcRenderer } from 'electron'
 import { electronAPI } from '@electron-toolkit/preload'
 
 const api = {
-  runPythonScript: (script: string, args: object = {}) => {
-    return ipcRenderer.invoke('run-python-script', script, args)
+  runPythonScript: async (script: string, args: object = {}) => {
+    return await ipcRenderer.invoke('run-python-script', script, args)
+  },
+  openDialog: async (filters: { name: string; extensions: string[] }) => {
+    return await ipcRenderer.invoke('open-dialog', filters)
   }
 }
 
