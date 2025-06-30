@@ -5,11 +5,14 @@ import { electronApp, is, optimizer } from '@electron-toolkit/utils'
 
 import openDialog from './handlers/open-dialog'
 import runPythonScript from './handlers/run-python-script'
+import { generalStore } from './utils/store'
 
 function createWindow(): void {
   const mainWindow = new BrowserWindow({
-    width: 900,
-    height: 670,
+    x: generalStore.get('x'),
+    y: generalStore.get('y'),
+    width: generalStore.get('width'),
+    height: generalStore.get('height'),
     show: false,
     autoHideMenuBar: true,
     webPreferences: {
@@ -20,6 +23,11 @@ function createWindow(): void {
 
   mainWindow.on('ready-to-show', () => {
     mainWindow.show()
+  })
+
+  mainWindow.on('close', () => {
+    const { x, y, width, height } = mainWindow.getBounds()
+    generalStore.set({ x, y, width, height })
   })
 
   mainWindow.webContents.setWindowOpenHandler((details) => {
