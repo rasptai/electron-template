@@ -10,7 +10,11 @@ export default function runPythonScript(): void {
       return await PythonShell.run(script, {
         pythonPath: getPythonPath(),
         scriptPath: getScriptPath(),
-        args: [JSON.stringify(args)]
+        args: [JSON.stringify(args)],
+        env: {
+          ...process.env,
+          PYTHONUTF8: '1'
+        }
       })
     }
   )
