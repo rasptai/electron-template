@@ -19,6 +19,10 @@ extraResources:
     filter: '**/*.py'
 win:
   executableName: electron-template
+  target:
+    - target: nsis
+      arch:
+        - x64
 nsis:
   artifactName: ${name}-${version}-setup.${ext}
   shortcutName: ${productName}
